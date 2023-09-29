@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>一封信</title>
+    <style>
+        body {
+            background: pink;
+        }
+    
+        .xin {
+            position: absolute;
+            top: -35px;
+            left: 90%;
+            font-size: 25px;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        h1 {
+            position: absolute;
+            top: 60px;
+            left: 100px;
+            font-size: 60px;
+            background: linear-gradient(125deg,#ff6df6,#48c3ff);
+            -webkit-background-clip:text;
+            color:transparent;
+        }
+
+        #xf {
+            position: absolute;
+            top: 260px;
+            left: 40px;
+            width: 310px;
+            height: 200px;
+            background-color: #ffc17a;
+            transform: rotate(9deg);
+            border-radius: 3px;
+            box-shadow: 1px 1px 10px #000000;
+            z-index: 2;
+        }
+
+        #xz {
+            background-color: white;
+            width: 90%;
+            height: 85%;
+            margin-top: -3px;
+            margin-left: 15px;
+            opacity: 0;
+            transition: 2s;
+        }
+
+        #san {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            border-top: 100px solid red;
+            border-left: 155px solid transparent;
+            border-right: 155px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-radius: 6px;
+        }
+
+        #san::after {
+            display: block;
+            position: absolute;
+            content: "";
+            top: -102px;
+            left: -155px;
+            width: 1px;
+            height: 1px;
+            border-top: 100px solid #ffc37a;
+            border-left: 155px solid transparent;
+            border-right: 155px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-radius: 6px;
+        }
+
+        #span {
+            position: absolute;
+            top: 80px;
+            left: 136px;
+            font-size: 30px;
+            animation: action 0.7s infinite;
+            text-shadow: 2px -2px 5px #ff7f78;
+        }
+
+        #p {
+            padding-top: 18px;
+            padding-left: 3px;
+            font-size: 18px;
+            text-indent: 2em;
+            background: linear-gradient(to left, #1b97ff, #ff6be0);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        #p::after {
+            content: "❤";
+            color: red;
+        }
+
+        h6 {
+            position: absolute;
+            top: 600px;
+            left: 180px;
+            font-size: 18px;
+            background: linear-gradient(-125deg,#ff6df6,#48c3ff);
+            -webkit-background-clip:text;
+            color:transparent;
+        }
+      
+        @keyframes action {
+            100% {
+                transform: scale(1.8);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>一封信</h1>
+    <div id="xf">
+        <div id="san"></div>
+        <span id="span">❤️</span>
+        <div id="xz">
+            <p id="p"></p>
+        </div>
+    </div>
+    <h6>———— 送给你的一封信</h6>
+    <div class="xin">❤️</div>
+    <script>
+        for (let i = 0; i < 50; i++) {
+            let xin = document.createElement('div')
+            xin.className = 'xin'
+            xin.innerHTML = '❤️'
+            document.body.appendChild(xin)
+            let randTrans = Math.round(15 + Math.random() * 5)
+            xin.style.transition = `all ${randTrans}s  linear`
+            let randTimer = Math.round(Math.random() * 15000)
+            setTimeout(function() {
+                xin.offsetTop
+                xin.style.top = '100%'
+                xin.style.left = Math.round(Math.random() * 90) + '%'
+            }, randTimer)
+            let randAnima = Math.round(Math.random() * 1)
+            xin.style.animation = `rotate 5s ${randAnima}s infinite linear`
+        }
+        let xf = document.getElementById("xf")
+        let p = document.getElementById("p")
+        let str = "世界这么大，我很幸运能遇见你！虽然我们很陌生，但我觉得我们不是陌生人，希望我们会成为一家人，希望我们的关系越来越好，我很期待那一天的到来哦！"
+        xf.onclick = function() {
+            document.getElementById("xz").style.opacity = 0.8
+            let i = 0
+            let timer = setInterval(() => {
+                p.innerHTML += str[i]
+                i++
+                if (i == str.length) {
+                    clearInterval(timer)
+                }
+            }, 200)
+        }
+    </script>
+</body>
+
+</html>
